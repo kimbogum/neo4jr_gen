@@ -1,7 +1,7 @@
-Neo4jrGen
+neo4jr_gen
 =========
 
-Neo4jrGen is a plugin that provides generators for Neo4jr scaffolds.
+neo4jr_gen is a plugin that provides a generator for Neo4jr scaffolds.
 
 The templates are based loosely on code from
 
