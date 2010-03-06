@@ -17,6 +17,7 @@ From your rails root run:
 
 Then add
 
+    map.resources :people
 
 to routes.rb
 
