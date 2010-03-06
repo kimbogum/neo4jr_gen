@@ -1,0 +1,23 @@
+Neo4jrGen
+=========
+
+Neo4jrGen is a plugin that provides generators for Neo4jr scaffolds.
+
+The templates are based loosely on code from
+
+http://github.com/andreasronge/neo4j-rails-example
+
+
+Example
+=======
+
+From your rails root run:
+
+    script/generate neo_scaffold Person name:string dob:date
+
+Then add
+
+
+to routes.rb
+
+Copyright (c) 2010 Justin Wood, released under the MIT license

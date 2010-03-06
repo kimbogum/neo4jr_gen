@@ -1,0 +1,28 @@
+Usage:
+
+  ./script/generate neo_scaffold ModelName [property:type, property:type]
+
+Description:
+
+  Scaffolds a Neo4j resource from model to controller and
+  views. The resource is ready to use as a starting point for your
+  Neo4jr based application.
+
+  Attribute pairs define property names type should be property for the standard types
+  supported by Neo4j e.g. string
+
+  If you want to remove all the generated files, run
+
+      'script/destroy scaffold ModelName'
+
+  Take the red pill.
+
+Example:
+
+    `./script/generate scaffold purchase order_id:integer amount:decimal`
+
+Then add
+
+    map.resources :purchases
+
+to routes.rb
