@@ -21,4 +21,15 @@ Then add
 
 to routes.rb
 
+
+To Do
+=====
+
+    - automatically insert resource map to routes.rb
+    - generate tests
+    - better type handling so that properties are generated with proper type definitions
+
+        eg.   property :dob, :type => Date
+
+
 Copyright (c) 2010 Justin Wood, released under the MIT license
