@@ -1,7 +1,7 @@
 neo4jr_gen
 =========
 
-neo4jr_gen is a plugin that provides a generator for Neo4jr scaffolds.
+neo4jr_gen is a plugin that provides a generator for Neo4jrb scaffolds.
 
 The templates are based loosely on code from
 
@@ -15,17 +15,10 @@ From your rails root run:
 
     script/generate neo_scaffold Person name:string dob:date
 
-Then add
-
-    map.resources :people
-
-to routes.rb
-
 
 To Do
 =====
 
-    - automatically insert resource map to routes.rb
     - generate tests
     - better type handling so that properties are generated with proper type definitions
 

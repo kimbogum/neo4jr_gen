@@ -59,9 +59,16 @@ class NeoScaffoldGenerator < Rails::Generator::NamedBase
       m.template "view_show.html.erb", File.join('app/views', plural_name, "show.html.erb")
       m.template "view_new.html.erb", File.join('app/views', plural_name, "new.html.erb")
       m.template "view_edit.html.erb", File.join('app/views', plural_name, "edit.html.erb")
+      add_resource
     end
 
-    #add the route to config/routes.rb
+
+
+
+  end
+
+  def add_resource
+      #add the route to config/routes.rb
     #check if its there already
     route_exists = false
     File.open('./config/routes.rb', 'r') do |f|
@@ -82,8 +89,6 @@ class NeoScaffoldGenerator < Rails::Generator::NamedBase
         file.write updated_routes
       end
     end
-
-
   end
 
   #override the attributes method to use GeneratedAttribute (not dependant on active record)
