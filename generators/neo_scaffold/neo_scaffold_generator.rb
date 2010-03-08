@@ -2,7 +2,7 @@ require 'optparse'
 
 module Neo4jrGen
 
-    #a generated attribute class that removes the dependancy on
+    #a generated attribute class that has no dependancy on
     #active record.
     class GeneratedAttribute
       attr_accessor :name, :type
@@ -47,13 +47,9 @@ end
 
 class NeoScaffoldGenerator < Rails::Generator::NamedBase
   def manifest
-    puts "Actions #{actions}"
-    puts "Class name #{class_name}"
-
-
-
-
-    puts "attributes #{attributes}"
+#    puts "Actions #{actions}"
+#    puts "Class name #{class_name}"
+#    puts "attributes #{attributes}"
 
     record do |m|
       m.template "model.rb", File.join('app/models', "#{singular_name}.rb")
@@ -64,6 +60,30 @@ class NeoScaffoldGenerator < Rails::Generator::NamedBase
       m.template "view_new.html.erb", File.join('app/views', plural_name, "new.html.erb")
       m.template "view_edit.html.erb", File.join('app/views', plural_name, "edit.html.erb")
     end
+
+    #add the route to config/routes.rb
+    #check if its there already
+    route_exists = false
+    File.open('./config/routes.rb', 'r') do |f|
+      while  line = f.gets
+        if line.match("map.resources :#{plural_name}")
+          route_exists = true
+          break
+        end
+      end
+    end
+    #if it doesn't add it
+    unless route_exists
+      routes = File.read('./config/routes.rb')
+      updated_routes = routes.gsub(/(ActionController::Routing::Routes.draw do \|map\|)/) do |s|
+        "#{$1}\n map.resources :#{plural_name}\n"
+      end
+      File.open('./config/routes.rb', 'w') do |file|
+        file.write updated_routes
+      end
+    end
+
+
   end
 
   #override the attributes method to use GeneratedAttribute (not dependant on active record)
